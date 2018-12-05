@@ -34,6 +34,12 @@ def train_cats(df):
         if is_string_dtype(c):
             df[n] = c.astype('category').cat.as_ordered()
             
+def train_cats_func(df):
+    for n, c in df.items():
+        if is_string_dtype(c):
+            df[n] = c.astype('category').cat.as_ordered()
+    return df
+            
 def proc_df(df, y_fld=None, skip_flds=None, ignore_flds=None, do_scale=False, na_dict=None, preproc_fn=None, max_n_cat=None, subset=None, mapper=None):
     if not ignore_flds: ignore_flds=[]
     if not skip_flds: skip_flds=[]
